@@ -23,8 +23,12 @@
         <button mat-button>NÁNAR</button>
         <button mat-button (click)="signUp(event)" *ngIf="!alreadySignedUp(event)" [disabled]="getAvailableSpotsCount(event) === 0">SKRÁ MIG</button>
         <button mat-button (click)="cancelSignUp(event)" *ngIf="alreadySignedUp(event)">AFSKRÁ MIG</button>
-        <span>
-            <i class="material-icons">message</i> {{event.comments.length}}
+        <span class="comment-overview" *ngIf="event.comments">
+            <i class="material-icons comment-icon">message</i> {{event.comments.length}}
         </span>
     </mat-card-actions>
 </mat-card>
+
+<button class="new-event-btn" mat-fab color="primary">
+    <mat-icon aria-label="Add event icon">add</mat-icon>
+</button>

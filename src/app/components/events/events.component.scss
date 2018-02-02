@@ -1,3 +1,5 @@
+@import '../../../theme/variables.scss';
+
 mat-card.event-card {
     padding: 0;
     margin-bottom: 16px;
@@ -31,7 +33,19 @@ mat-card.event-card {
     mat-card-actions.event-card-actions {
         padding: 10px 24px;
         margin: 0;
+        
+        .comment-overview {
+            .comment-icon {
+                position: relative;
+                bottom: -6px;
+            }
+        }
     }
 }
 
-  
+.new-event-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: $color1;
+}

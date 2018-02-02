@@ -72,6 +72,11 @@ export class EventService {
   }
 
   signUp(event: Event) {
+    // Initialize the signedUp array if non-existant
+    if (!event.signedUp) {
+      event.signedUp = [];
+    }
+
     const userId = this.authService.getUserId();
     const userIndex = event.signedUp.findIndex(signUp => signUp.player === userId);
     const locationRef = `events/${event.eventId}/signedUp`;
@@ -82,7 +87,7 @@ export class EventService {
       event.signedUp.push({ active: true, player: userId });
     }
     this.afDatabase.database.ref(locationRef).update(event.signedUp).then(
-      success => this.snackBar.open('Þú hefur verið skráður refur!', 'Loka', {duration: 2000})
+      success => this.snackBar.open('Þú hefur verið skráður refur!', 'Loka', { duration: 2000 })
     );
   }
 
@@ -98,7 +103,7 @@ export class EventService {
         if (result) {
           event.signedUp[userIndex].active = false;
           this.afDatabase.database.ref(locationRef).update(event.signedUp).then(
-            success => this.snackBar.open('Þú hefur verið afskráður', 'Loka', {duration: 2000})
+            success => this.snackBar.open('Þú hefur verið afskráður', 'Loka', { duration: 2000 })
           );
         }
       });
@@ -121,7 +126,17 @@ export class EventService {
 
   alreadySignedUp(event: Event): boolean {
     const userId = this.authService.getUserId();
-    return event.signedUp.some(signUp => signUp.player === userId && signUp.active === true);
+    return event.signedUp && event.signedUp.some(signUp => signUp.player === userId && signUp.active === true);
+  }
+
+  addNewEvent() {
+    const locationRef = 'events';
+    const newEventRef = this.afDatabase.list(locationRef).push(new Event(
+      this.authService.getUserId(),
+      '04/04/2020 04:03:35 AM',
+      '04/04/2012 04:03:35 AM',
+      10
+    ));
   }
 
 }

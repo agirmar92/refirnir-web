@@ -44,6 +44,11 @@ export class EventsComponent implements OnInit {
     // Listen for when new events are added.
     this.eventService.onNewEvents().subscribe(newEvent => {
       console.log(newEvent);
+      if (!newEvent.payload.val().eventId) {
+        const newEventVal = newEvent.payload.val();
+        newEventVal['eventId'] = newEvent.key;
+        newEvent.payload.ref.update(newEventVal);
+      }
       const newEventObject: Event = this.eventService.buildEventObject(newEvent.payload.val());
 
       // Listen to event changes (signups and ...)
@@ -78,6 +83,10 @@ export class EventsComponent implements OnInit {
 
   cancelSignUp(event: Event) {
     this.eventService.cancelSignUp(event);
+  }
+
+  addNewEvent() {
+    this.eventService.addNewEvent();
   }
 
 }
