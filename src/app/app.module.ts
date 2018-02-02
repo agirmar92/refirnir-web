@@ -19,7 +19,9 @@ import {
   MatProgressBarModule,
   MatSnackBarModule,
   MatCardModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { AgmCoreModule } from '@agm/core';
@@ -38,6 +40,7 @@ import { UserService } from './services/user/user.service';
 import { EventService } from './services/event/event.service';
 
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { PromptComponent } from './components/dialogs/prompt/prompt.component';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -64,7 +67,8 @@ export class AuthGuard implements CanActivate {
     AppComponent,
     LoginComponent,
     EventsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PromptComponent
   ],
   imports: [
     // Routes config
@@ -108,13 +112,18 @@ export class AuthGuard implements CanActivate {
     MatProgressBarModule,
     MatSnackBarModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    PromptComponent
   ],
   providers: [
     AuthService,
     UserService,
     EventService,
-    AuthGuard
+    AuthGuard,
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [AppComponent]
 })

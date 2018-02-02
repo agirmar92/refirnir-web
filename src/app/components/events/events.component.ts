@@ -10,7 +10,6 @@ import { UserProfile } from '../../models/user-profile';
 import { Event } from '../../models/event';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
-import { DataSnapshot } from '@firebase/database/dist/esm/src/api/DataSnapshot';
 
 @Component({
   selector: 'app-events',
@@ -21,7 +20,7 @@ export class EventsComponent implements OnInit {
 
   currentUser: firebase.User;
   loadingEvents = false;
-  allEvents: Array<Event>;
+  allEvents: Array<Event> = [];
   lat = 64.088466;
   lng = -21.927701;
   mapType = 'hybrid';
@@ -42,11 +41,23 @@ export class EventsComponent implements OnInit {
 
     this.loadingEvents = true;
 
-    this.eventService.getAllEvents().subscribe((events: Array<Event>) => {
-      console.log(events);
-      this.allEvents = events;
+    // Listen for when new events are added.
+    this.eventService.onNewEvents().subscribe(newEvent => {
+      console.log(newEvent);
+      const newEventObject: Event = this.eventService.buildEventObject(newEvent.payload.val());
+
+      // Listen to event changes (signups and ...)
+      this.eventService.onSignUpChange(`events/${newEventObject.eventId}/signedUp`)
+        .subscribe(changedSignUp => {
+          console.log(changedSignUp);
+          this.eventService.refreshSignUpDetails(newEventObject, changedSignUp);
+        });
+
+      this.allEvents.push(newEventObject);
       this.loadingEvents = false;
     });
+
+    // TODO: Listen to event deletion
   }
 
   getNumberOfActiveSignUps(event: Event): number {
