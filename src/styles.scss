@@ -2,7 +2,7 @@
 @import 'src/theme/variables.scss';
 
 body {
-    max-width: 1100px;
+    max-width: 900px;
     margin: map-get($desktop, navBarHeight) auto 20px auto;
     padding: 20px;
     background-color: $color1;

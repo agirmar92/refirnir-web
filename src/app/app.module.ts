@@ -73,7 +73,7 @@ export class AuthGuard implements CanActivate {
         {
           path: 'events',
           component: EventsComponent,
-          // canActivate: [AuthGuard]
+          canActivate: [AuthGuard]
         },
         {
           path: 'login',

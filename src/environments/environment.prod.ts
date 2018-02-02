@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyC9QRSz_OpA46l3Jmn9x1Zx6HDXc4q51RU',
-    authDomain: 'refirnir.firebaseapp.com',
-    databaseURL: 'https://refirnir.firebaseio.com',
-    projectId: 'firebase-refirnir',
-    storageBucket: 'firebase-refirnir.appspot.com',
-    messagingSenderId: '476862818948'
+    apiKey: 'AIzaSyDQNFcS3iKnkoi7nasl4i1FWrGVCBGsEmw',
+    authDomain: 'refirnir-6e6b6.firebaseapp.com',
+    databaseURL: 'https://refirnir-6e6b6.firebaseio.com',
+    projectId: 'refirnir-6e6b6',
+    storageBucket: 'refirnir-6e6b6.appspot.com',
+    messagingSenderId: '870101998546'
   }
 };
