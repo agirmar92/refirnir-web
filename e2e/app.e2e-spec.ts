@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('refirnir-web App', () => {
+describe('snapcoach-admin App', () => {
   let page: AppPage;
 
   beforeEach(() => {

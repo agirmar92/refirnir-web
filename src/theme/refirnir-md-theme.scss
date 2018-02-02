@@ -1,0 +1,125 @@
+@import '~@angular/material/theming';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-refirnirprimary: (
+    50 : #fff3e4,
+    100 : #ffe2bb,
+    200 : #ffcf8e,
+    300 : #ffbc60,
+    400 : #ffad3e,
+    500 : #ff9f1c,
+    600 : #ff9719,
+    700 : #ff8d14,
+    800 : #ff8311,
+    900 : #ff7209,
+    A100 : #ffffff,
+    A200 : #fff9f5,
+    A400 : #ffd9c2,
+    A700 : #ffc9a8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-refirniraccent: (
+    50 : #e0e1e1,
+    100 : #b3b3b3,
+    200 : #808081,
+    300 : #4d4d4f,
+    400 : #262729,
+    500 : #000103,
+    600 : #000103,
+    700 : #000102,
+    800 : #000102,
+    900 : #000001,
+    A100 : #a6a6a6,
+    A200 : #8c8c8c,
+    A400 : #737373,
+    A700 : #666666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-refirnirwarn: (
+    50 : #fdeae6,
+    100 : #fbcbc2,
+    200 : #f9a999,
+    300 : #f68670,
+    400 : #f46c51,
+    500 : #f25232,
+    600 : #f04b2d,
+    700 : #ee4126,
+    800 : #ec381f,
+    900 : #e82813,
+    A100 : #ffffff,
+    A200 : #ffe6e4,
+    A400 : #ffb7b1,
+    A700 : #ff9f97,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$refirnir-app-primary: mat-palette($md-refirnirprimary);
+$refirnir-app-accent:  mat-palette($md-refirniraccent);
+
+// The warn palette is optional (defaults to red).
+$refirnir-app-warn:    mat-palette($md-refirnirwarn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$refirnir-app-theme: mat-light-theme($refirnir-app-primary, $refirnir-app-accent, $refirnir-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($refirnir-app-theme);

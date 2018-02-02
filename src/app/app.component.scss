@@ -1,0 +1,171 @@
+@import "./src/theme/variables.scss";
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $color3;
+    color: white;
+    width: 100%;
+    height: map-get($desktop, navBarHeight);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    overflow: hidden;
+    z-index: 1;
+
+    & * {
+        vertical-align: top;
+    }
+
+    & > * {
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+        -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+        height: 100%;
+        margin: 0;
+        display: inline-block;
+    }
+
+    .logo {
+        line-height: map-get($desktop, navBarHeight);
+        text-align: center;
+        font-size: 38px;
+        
+        a {
+            position: relative;
+            
+            .logo-image {
+                position: absolute;
+                right: -50px;
+                display: inline-block;
+                width: 44px;
+                height: map-get($desktop, navBarHeight);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url('../assets/fox_head.png');
+                background-position-y: center;
+                -webkit-transition: background-image .5s ease;
+                transition: background-image .5s ease;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-bottom: 2px solid $color2;
+                -webkit-transition: width .5s ease;
+                transition: width .5s ease;
+            }
+            &:hover {
+                &::after {
+                    width: 0;
+                }
+
+                .logo-image {
+                    background-image: url('../assets/fox_head_filled.png');
+                }
+            }
+        }
+    }
+
+    .user-info-container {
+        .user-info-wrapper {
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transition: left 1s ease;
+            transition: left 1s ease;
+
+            &.slide-left {
+                left: -300px;
+            }
+
+            .profile-img {
+                display: inline-block;
+                height: map-get($desktop, navBarHeight);
+                width: map-get($desktop, navBarHeight);
+                background-color: gray;
+                background-size: contain;
+            }
+
+            .user-info {
+                height: calc(100% - 20px);
+                padding: 10px 0 10px 10px;
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
+
+                p {
+                    margin: 0;
+                    -webkit-box-flex: 1;
+                        -ms-flex-positive: 1;
+                            flex-grow: 1;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-preferred-size: 0;
+                        flex-basis: 0;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                            flex-direction: column;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                            justify-content: center;
+
+                    &.user-name {
+                        font-weight: 500;
+                    }
+
+                    &.user-email {
+                        font-weight: 100;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-btn-container {
+        text-align: right;
+
+        .btn-wrapper {
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: right 1s ease;
+            transition: right 1s ease;
+
+            &.slide-right {
+                right: -300px;
+            }
+
+            .nav-btn {
+                height: 100%;
+
+                &.logout {
+                    -webkit-box-shadow: none;
+                            box-shadow: none;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

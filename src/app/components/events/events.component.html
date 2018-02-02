@@ -1,0 +1,30 @@
+<h1>Boltar</h1>
+
+<app-spinner [shouldSpin]="loadingEvents"></app-spinner>
+
+
+<mat-card class="event-card" *ngFor="let event of allEvents">
+    <div class="event-card-header">
+        <agm-map [latitude]="lat" [longitude]="lng" [mapTypeId]="mapType" [zoom]="zoom">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </div>
+    <mat-card-content class="event-card-content">
+        <div>
+            {{getNumberOfActiveSignUps(event)}} REFIR SKRÁÐIR - {{getAvailableSpotsCount(event)}} LAUS PLÁSS:
+        </div>
+        <span *ngFor="let signUp of event.signedUpDetails">
+            <div mat-card-avatar *ngIf="signUp.active" class="signed-player-avatar" [style.background-image]="'url(' + signUp.player.imageUrl + ')'"
+                [matTooltip]="signUp.player.name" matTooltipPosition="above">
+            </div>
+        </span>
+    </mat-card-content>
+    <mat-card-actions class="event-card-actions">
+        <button mat-button>NÁNAR</button>
+        <button mat-button (click)="signUp(event)" *ngIf="!alreadySignedUp(event)" [disabled]="getAvailableSpotsCount(event) === 0">SKRÁ MIG</button>
+        <button mat-button (click)="cancelSignUp(event)" *ngIf="alreadySignedUp(event)">AFSKRÁ MIG</button>
+        <span>
+            <i class="material-icons">message</i> {{event.comments.length}}
+        </span>
+    </mat-card-actions>
+</mat-card>

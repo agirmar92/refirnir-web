@@ -1,0 +1,8 @@
+<h1>Innskráning</h1>
+
+<div class="login-container mat-elevation-z8">
+    <mat-progress-bar mode="indeterminate" [class.invisible]="!loggingIn"></mat-progress-bar>
+
+    <button mat-raised-button class="facebook-btn" (click)="loginWithFacebook()" [disabled]="loggingIn">Innskráning með Facebook</button>
+    <button mat-raised-button class="google-btn" (click)="loginWithGoogle()" [disabled]="loggingIn">Innskráning með Google</button>
+</div>

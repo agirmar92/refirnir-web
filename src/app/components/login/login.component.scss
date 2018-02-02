@@ -1,0 +1,51 @@
+h1 {
+    max-width: 600px;
+    margin: auto;
+}
+
+.login-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 20px;
+    margin: auto;
+    position: relative;
+
+    mat-progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+
+    .login-full-width {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        font-weight: 400;
+        text-transform: uppercase;
+
+        &.login-btn {
+            margin-bottom: 30px;
+        }
+
+        &.facebook-btn {
+            background-color: #3b5998;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        &.google-btn {
+            background-color: #d62d20;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'src/theme/variables.scss';
+
+body {
+    max-width: 1100px;
+    margin: map-get($desktop, navBarHeight) auto 20px auto;
+    padding: 20px;
+    background-color: $color1;
+
+    a:link {
+        text-decoration: inherit;
+        color: inherit;
+    }
+
+    a:visited {
+        text-decoration: inherit;
+        color: inherit;
+    }
+
+    .invisible {
+        opacity: 0 !important;
+    }
+
+    h1 {
+        font-family: 'Montserrat', sans-serif !important;
+    }
+}

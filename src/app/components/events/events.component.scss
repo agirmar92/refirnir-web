@@ -1,0 +1,37 @@
+mat-card.event-card {
+    padding: 0;
+    margin-bottom: 16px;
+
+    .event-card-header {
+        agm-map {
+            height: 300px;
+            width: 100%;
+        }
+        .event-card-header-image {
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+
+    mat-card-content.event-card-content {
+        padding: 24px 24px 0 24px;
+
+        .signed-player-avatar {
+            display: inline-block;
+            margin: 4px;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+
+    mat-card-actions.event-card-actions {
+        padding: 10px 24px;
+        margin: 0;
+    }
+}
+
+  
