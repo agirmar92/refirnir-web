@@ -7,7 +7,7 @@ nav {
     background-color: $color3;
     color: white;
     width: 100%;
-    height: map-get($desktop, navBarHeight);
+    height: $navBarHeight;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -19,6 +19,8 @@ nav {
         flex-wrap: nowrap;
     overflow: hidden;
     z-index: 2;
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
     & * {
         vertical-align: top;
@@ -36,7 +38,7 @@ nav {
     }
 
     .logo {
-        line-height: map-get($desktop, navBarHeight);
+        line-height: $navBarHeight;
         text-align: center;
         font-size: 38px;
         
@@ -48,7 +50,7 @@ nav {
                 right: -50px;
                 display: inline-block;
                 width: 44px;
-                height: map-get($desktop, navBarHeight);
+                height: $navBarHeight;
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-image: url('../assets/fox_head.png');
@@ -95,8 +97,8 @@ nav {
 
             .profile-img {
                 display: inline-block;
-                height: map-get($desktop, navBarHeight);
-                width: map-get($desktop, navBarHeight);
+                height: $navBarHeight;
+                width: $navBarHeight;
                 background-color: gray;
                 background-size: contain;
             }
@@ -145,7 +147,8 @@ nav {
     .nav-btn-container {
         text-align: right;
 
-        .btn-wrapper {
+        .btn-wrapper,
+        .menu-wrapper {
             height: 100%;
             position: absolute;
             right: 0;
@@ -164,6 +167,55 @@ nav {
                     -webkit-box-shadow: none;
                             box-shadow: none;
                     border-radius: 0;
+                }
+            }
+        }
+        .menu-wrapper {
+            display: none;
+        }
+    }
+}
+@media (max-width: 768px) {
+    $navBarHeight: 60px;
+
+    nav {
+        height: $navBarHeight;
+
+        .user-info-container {
+            .user-info-wrapper {
+                .profile-img {
+                    height: $navBarHeight;
+                    width: $navBarHeight;
+                }
+                .user-info {
+                    display: none;
+                }
+            }
+        }
+        .logo {
+            font-size: 24px;
+            line-height: $navBarHeight;
+            a {
+                .logo-image {
+                    height: $navBarHeight;
+                }
+            }
+        }
+        .nav-btn-container {
+            .btn-wrapper {
+                display: none;
+            }
+            .menu-wrapper {
+                display: block;
+
+                button {
+                    height: $navBarHeight;
+                    width: $navBarHeight;
+                    line-height: $navBarHeight;
+
+                    & .mat-icon {
+                        line-height: $navBarHeight;
+                    }
                 }
             }
         }

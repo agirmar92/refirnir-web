@@ -3,7 +3,7 @@
 
 body {
     max-width: 900px;
-    margin: map-get($desktop, navBarHeight) auto 20px auto;
+    margin: $navBarHeight auto 20px auto;
     padding: 20px;
     background-color: $color1;
 

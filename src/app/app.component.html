@@ -15,8 +15,25 @@
     </h1>
     <div class="nav-btn-container">
         <div class="btn-wrapper" [class.slide-right]="!currentUser">
-            <button mat-button class="nav-btn"><a routerLink="/events">Boltar</a></button>
+            <button mat-button class="nav-btn">
+                <a routerLink="/events">Boltar</a>
+            </button>
             <button mat-raised-button class="nav-btn logout" color="warn" (click)="logout()">Útskrá</button>
+        </div>
+        <div class="menu-wrapper" [class.slide-right]="!currentUser">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>view_list</mat-icon>
+                    <a routerLink="/events">Boltar</a>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Útskrá</span>
+                </button>
+            </mat-menu>
         </div>
     </div>
 </nav>
